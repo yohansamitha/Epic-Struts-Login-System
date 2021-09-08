@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <package name="default" namespace="/auth" extends="json-default">
+        <action name="login" class="com.epic.action.LoginAction" method="login">
+            <result type="json">
+                <param name="root">standardResponse</param>
+            </result>
+        </action>
+        <action name="logout" class="com.epic.action.LogoutAction" method="logout">
+            <result type="json">
+                <param name="root">standardResponse</param>
+            </result>
+        </action>
+    </package>
+
+    <package name="main" namespace="/user" extends="json-default">
+
+        <!--        to handle new user creation-->
+        <action name="createUser" class="com.epic.action.CreateUserAction" method="createUser">
+            <result type="json">
+                <param name="root">standardResponse</param>
+            </result>
+        </action>
+
+        <!--        to update user handle-->
+        <action name="updateUser" class="com.epic.action.UpdateUserAction" method="updateUser">
+            <result type="json">
+                <param name="root">standardResponse</param>
+            </result>
+        </action>
+
+        <!--        to get all the users-->
+        <action name="getAllUsers" class="com.epic.action.GetAllUsersAction" method="getAllUsers">
+            <result type="json">
+                <param name="root">standardResponse</param>
+            </result>
+        </action>
+
+        <!--        to delete user-->
+        <action name="deleteUser" class="com.epic.action.DeleteUserAction" method="deleteUser">
+            <result type="json">
+                <param name="root">standardResponse</param>
+            </result>
+        </action>
+    </package>
+
+</struts>
