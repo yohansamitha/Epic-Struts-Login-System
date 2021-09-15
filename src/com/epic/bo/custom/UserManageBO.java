@@ -7,9 +7,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public interface UserManageBO extends SuperBO {
-    boolean saveUser(UserDTO userDTO) throws SQLException, ClassNotFoundException;
+    boolean saveUser(UserDTO userDTO) throws Exception;
 
-    UserDTO validateUser(String userName, String password) throws SQLException, ClassNotFoundException;
+    UserDTO validateUser(String userName, String password) throws Exception;
 
     boolean updateUser(UserDTO userDTO) throws SQLException, ClassNotFoundException;
 

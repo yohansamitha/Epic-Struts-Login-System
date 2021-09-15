@@ -12,6 +12,8 @@
       <root url="jar://$PROJECT_DIR$/lib/commons-lang3-3.8.1.jar!/" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.ideaLibSources/struts2-core-2.5.26-sources.jar!/" />
+    </SOURCES>
   </library>
 </component>

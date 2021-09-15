@@ -9,7 +9,6 @@ import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.SessionAware;
 
 import javax.servlet.http.HttpServletRequest;
-import java.sql.SQLException;
 import java.util.Map;
 
 public class LoginAction extends ActionSupport implements SessionAware {
@@ -45,11 +44,10 @@ public class LoginAction extends ActionSupport implements SessionAware {
             } else {
                 setStandardResponse(new StandardResponse("400", "username or Password is missing", ""));
             }
-            return SUCCESS;
-        } catch (SQLException | ClassNotFoundException | NullPointerException e) {
+        } catch (Exception e) {
             e.printStackTrace();
-            return SUCCESS;
         }
+        return SUCCESS;
     }
 
     @Override

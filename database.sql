@@ -9,7 +9,7 @@ create table User
     address      varchar(260) not null,
     contact      varchar(60)  not null,
     emailAddress varchar(100) not null,
-    password     varchar(15)  not null
+    password varchar(50) not null
 );
 
 desc User;

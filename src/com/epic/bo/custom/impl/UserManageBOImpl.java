@@ -5,6 +5,7 @@ import com.epic.dao.DAOFactory;
 import com.epic.dao.custom.UserManageDAO;
 import com.epic.dto.UserDTO;
 import com.epic.model.User;
+import com.epic.security.AES;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -14,14 +15,15 @@ public class UserManageBOImpl implements UserManageBO {
     private final UserManageDAO userManageDAO = DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.UserManageDAOImpl);
 
     @Override
-    public boolean saveUser(UserDTO userDTO) throws SQLException, ClassNotFoundException {
+    public boolean saveUser(UserDTO userDTO) throws Exception {
+        userDTO.setPassword(AES.getInstance().encrypt(userDTO.getPassword()));
         return userManageDAO.add(new User(userDTO.getName(), userDTO.getAddress(), userDTO.getContact(), userDTO.getEmailAddress(),
                 userDTO.getPassword()));
     }
 
     @Override
-    public UserDTO validateUser(String userName, String password) throws SQLException, ClassNotFoundException {
-        User user = userManageDAO.validateUser(userName, password);
+    public UserDTO validateUser(String userName, String password) throws Exception {
+        User user = userManageDAO.validateUser(userName, AES.getInstance().encrypt(password));
         return (user != null) ? new UserDTO(user.getId(), user.getName(), user.getAddress(), user.getContact(), user.getEmailAddress(),
                 user.getPassword()) : null;
     }
